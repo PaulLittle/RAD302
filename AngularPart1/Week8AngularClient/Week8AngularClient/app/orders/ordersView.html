@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>    
+    <div class="panel panel-primary"
+         ng-controller="OrderCtrl as vm">
+        <div class="panel-heading"
+             style="font-size:large">
+            Order List
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Order</td>
+                        <td>Customer</td>
+                        <td>Order Date</td>
+                        <td>Entered By</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="order in vm.orders">
+                        <td>{{ order.id}}</td>
+                        <td>{{ order.customer.name }}</td>
+                        <td>{{ order.orderDate | date }}</td>
+                        <td>{{ order.enteredBy }}</td>
+                        <td>
+                            <button ng-click="vm.getOrderWithProducts(order.id)">
+                                Show Order Lines
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td>Order Line</td>
+                        <td>Product ID</td>
+                        <td>Description</td>
+                        <td>Quantity</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="line in vm.Lines">
+                        <td>{{ line.id}}</td>
+                        <td>{{ line.productID}}</td>
+                        <td>{{ line.product.description}}</td>
+                        <td>{{ line.quantity}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

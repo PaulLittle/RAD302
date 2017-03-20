@@ -10,10 +10,12 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using AngularClientWeek82.Models;
+using System.Web.Http.Cors;
 
 namespace AngularClientWeek82.Controllers
 {
     [RoutePrefix("api/orders")]
+    [EnableCors("http://localhost:3036","*","*")]
     public class OrdersController : ApiController
     {
         private BusinessDBContext db = new BusinessDBContext();
@@ -29,7 +31,8 @@ namespace AngularClientWeek82.Controllers
         {
             return db.OrderLines.Include(l => l.Product)
                 .Include(l => l.Order)
-                .Include(o => o.Order.Customer);
+                .Include(o => o.Order.Customer)
+                .Where(o => o.OrderID == id);
         }
 
         // GET: api/Orders/5

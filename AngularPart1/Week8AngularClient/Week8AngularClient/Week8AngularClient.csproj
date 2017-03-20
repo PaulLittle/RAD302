@@ -66,7 +66,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\orders\ordersCtrl.js" />
+    <Content Include="app\orders\ordersView.html" />
     <Content Include="common\common.services.js" />
+    <Content Include="common\orderResource.js" />
     <Content Include="packages.config" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-resource.min.js.map" />
@@ -80,7 +83,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\orders\app.js" />
+    <Content Include="app\app.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

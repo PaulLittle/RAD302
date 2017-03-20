@@ -7,5 +7,5 @@
     .constant("appSettings",
     {
         serverPath: "http://localhost:2806/"
-    })
-})
+    });
+}());
