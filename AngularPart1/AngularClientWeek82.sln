@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularClientWeek82", "AngularClientWeek82\AngularClientWeek82.csproj", "{03A4A3A4-FEC3-44E6-9832-B591E697CA9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularClientWeek82.Tests", "AngularClientWeek82.Tests\AngularClientWeek82.Tests.csproj", "{0B93800F-92B4-47AD-8900-EE00D2FB8844}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week8AngularClient", "Week8AngularClient\Week8AngularClient\Week8AngularClient.csproj", "{13593457-E46B-4C2F-A697-D6B13D0F7E6C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03A4A3A4-FEC3-44E6-9832-B591E697CA9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03A4A3A4-FEC3-44E6-9832-B591E697CA9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03A4A3A4-FEC3-44E6-9832-B591E697CA9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03A4A3A4-FEC3-44E6-9832-B591E697CA9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B93800F-92B4-47AD-8900-EE00D2FB8844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B93800F-92B4-47AD-8900-EE00D2FB8844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B93800F-92B4-47AD-8900-EE00D2FB8844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B93800F-92B4-47AD-8900-EE00D2FB8844}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13593457-E46B-4C2F-A697-D6B13D0F7E6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13593457-E46B-4C2F-A697-D6B13D0F7E6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13593457-E46B-4C2F-A697-D6B13D0F7E6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13593457-E46B-4C2F-A697-D6B13D0F7E6C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
