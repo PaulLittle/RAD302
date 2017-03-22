@@ -10,11 +10,12 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using AngularClientWeek82.Models;
+using System.Web.Http.Cors;
 
 namespace AngularClientWeek82.Controllers
 {
     [RoutePrefix("api/customers")]
-    //[EnableCors("http://localhost:1915", "*", "*")]
+    [EnableCors("http://localhost:1915", "*", "*")]
     public class CustomersController : ApiController
     {
         private BusinessDBContext db = new BusinessDBContext();
@@ -23,6 +24,14 @@ namespace AngularClientWeek82.Controllers
         public IQueryable<Customer> GetCustomers()
         {
             return db.Customers;
+        }
+
+        [Route("GetCids")]
+        public List<dynamic> GetCids()
+        {
+            var Cids = db.Customers
+                .Select(c => new { id = c.ID, name = c.Name });
+            return Cids.ToList<dynamic>();
         }
 
         // GET: api/Customers/5

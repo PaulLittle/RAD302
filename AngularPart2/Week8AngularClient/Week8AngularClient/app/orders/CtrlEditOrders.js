@@ -37,5 +37,7 @@
             function (data) {
                 vm.Ids = data;
             });
+
+
     }
 }());

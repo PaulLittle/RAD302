@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\orders\CtrlEditOrders.js" />
+    <Content Include="app\orders\editOrdersView.html" />
     <Content Include="app\orders\ordersCtrl.js" />
     <Content Include="app\orders\ordersView.html" />
     <Content Include="common\common.services.js" />

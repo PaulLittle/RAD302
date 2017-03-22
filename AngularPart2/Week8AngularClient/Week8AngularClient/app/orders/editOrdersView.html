@@ -1,0 +1,25 @@
+﻿<form class="form-horizontal"
+      name="customerForm"
+      novalidate
+      ng-controller="EditOrderCtrl as vm">
+    <fieldset>
+        <legend>Basic Order Information</legend>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="repeatSelect"> Select Customer </label>
+            <div class="col-md-4">
+                <select class="form-control" name="repeatSelect" id="repeatSelect"
+                        ng-model="itemSelected"
+                        ng-change="vm.changed(itemSelected)">
+                    <option ng-repeat="option in vm.Ids"
+                            value="{{option.id}}">
+                        {{option.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        
+
+    </fieldset>
+</form>
+
+
