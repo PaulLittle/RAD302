@@ -1,0 +1,5 @@
+﻿add-Migration -ConfigurationTypeName Rad301ClubsV1.Migrations.Configuration "thismigration"
+update-database -ConfigurationTypeName Rad301ClubsV1.Migrations.Configuration
+
+add-Migration -ConfigurationTypeName Rad301ClubsV1.Migrations.ClubModelMigrations.Configuration "NullableDateTime"
+update-database -ConfigurationTypeName Rad301ClubsV1.Migrations.ClubModelMigrations.Configuration
