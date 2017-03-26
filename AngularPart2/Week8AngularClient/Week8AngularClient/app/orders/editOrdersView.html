@@ -21,8 +21,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label" for="repeatSelect"> Select Order ID</label>
             <div class="col-md-4">
-                <select class="form-control" name="repeatSelect" id="repeatSelect"
-                        
+                <select class="form-control" name="repeatSelect" id="repeatSelect"                        
                         ng-model="itemSelected"
                         ng-change="vm.changed(itemSelected)">
                     <option style="font: inherit" value="0">{{vm.title }}</option>
@@ -33,22 +32,7 @@
                 </select>
             </div>
         </div>
-
-        <!--<div class="form-group">
-            <label class="col-md-2 control-label" for="repeatSelect"> Select Order </label>
-            <div class="col-md-4">
-                <select class="form-control" name="repeatSelect" id="repeatSelect"
-                        ng-model="itemSelected"
-                        ng-change="vm.changed(itemSelected)">
-                    <option style="font: inherit" value="0">{{vm.title }}</option>
-                    <option ng-repeat="option in vm.orders"
-                            value="{{option.id}}">
-                        {{option.id}}
-                    </option>
-                </select>
-            </div>
-        </div>-->
-
+        
         <div class="form-group"
              ng-class="{'has-error':orderForm.inputEnteredBy.$invalid &&
                                     orderForm.inputEnteredBy.$dirty}">
@@ -122,31 +106,54 @@
             </div>
         </div>
 
+        <div class="panel panel-primary">
+            <div class="panel-heading"
+                 style="font-size:large">
+                Customer Orders
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>Order</td>
+                            <td>Order Date</td>
+                            <td>Entered By</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="order in vm.order">
+                            <td>{{ order.id}}</td>
+                            <td>{{ order.orderDate | date }}</td>
+                            <td>{{ order.enteredBy }}</td>
+                            <td>
+                                <button ng-click="vm.getOrderWithProducts(order.id)">
+                                    Show Order Lines
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-    <!--<div class="form-group"
-            ng-class="{'has-error':customerForm.inputOrderDate.$invalid &&
-                            customerForm.inputOrderDate.$dirty}">
-        <label class="col-md-2 control-label"
-                for="inputOrderDate">Order Date</label>
-
-        <div class="col-md-4">
-            <input class="form-control"
-                    id="inputOrderDate"
-                    name="inputOrderDate"
-                    type="text"
-                    placeholder="Order Date (required)"
-                    ng-model="vm.order.orderDate"
-                    required />
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td>Order Line</td>
+                            <td>Product ID</td>
+                            <td>Description</td>
+                            <td>Quantity</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="line in vm.productOrderLines">
+                            <td>{{ line.id}}</td>
+                            <td>{{ line.productID}}</td>
+                            <td>{{ line.product.description}}</td>
+                            <td>{{ line.quantity}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <span class="help-block has-error">
-            <span ng-show="customerForm.inputOrderDate.$error.required">
-                Order date is required.
-            </span>
-        </span>
-        <div class="form-group">
-
-        </div>
-    </div>-->
 
 </fieldset>
 </form>

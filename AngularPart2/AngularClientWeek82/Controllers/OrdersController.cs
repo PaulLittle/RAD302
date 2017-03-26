@@ -20,11 +20,22 @@ namespace AngularClientWeek82.Controllers
     {
         private BusinessDBContext db = new BusinessDBContext();
 
-        // GET: api/Orders
-        //public IQueryable<Order> GetOrders()
-        //{
-        //    return db.Orders.Include("Customer").Include("Orderlines");
-        //}
+        //GET: api/Orders
+        public List<dynamic> Get()
+        {
+            return db.Orders.Include("Customer").Include("Orderlines").ToList<dynamic>();
+        }
+               
+
+        [Route("getOrdersWithProducts/ID/{id:int}")]
+        public IQueryable<OrderLine> GetOrdersWithProducts(int id)
+        {
+            var ordersWithProducts = db.OrderLines.Include(l => l.Product)
+                .Include(l => l.Order)
+                .Include(o => o.Order.Customer)
+                .Where(o => o.OrderID == id);
+            return ordersWithProducts;
+        }
 
         [Route("GetOrders")]
         public List<dynamic> GetOrders()
@@ -43,24 +54,13 @@ namespace AngularClientWeek82.Controllers
             return GetOrders.ToList<dynamic>();
         }
 
-        [Route("getOrdersWithProducts/ID/{id:int}")]
-        public IQueryable<OrderLine> GetOrdersWithProducts(int id)
+        [Route("GetOrderLines/ID/{id:int}")]
+        public List<dynamic> GetOrderLines(int id)
         {
-            var ordersWithProducts = db.OrderLines.Include(l => l.Product)
-                .Include(l => l.Order)
-                .Include(o => o.Order.Customer)
-                .Where(o => o.OrderID == id);
-            return ordersWithProducts;
+            var GetOrderLines = db.OrderLines
+                .Where(ol => ol.OrderID == id);
+            return GetOrderLines.ToList<dynamic>();
         }
-
-        //[Route("getTrimmedProducts/ID/{id:int}")]
-        //public List<dynamic> GetPids()
-        //{
-        //    var productRepository = new Models.ProductRepository();
-        //    var Pids = productRepository.Retrieve()
-        //        .Select(productRepository => new { id = p.ProductId, name = p.ProductName });
-        //    return Pids.ToList<dynamic>();
-        //}
 
         // GET: api/Orders/5
         [ResponseType(typeof(Order))]

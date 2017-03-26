@@ -8,7 +8,7 @@
 
     function OrderCtrl(orderResource) {
         var vm = this;
-        vm.Lines = [];
+        //vm.Lines = [];
         orderResource.Orders.query(function (data) {
             vm.orders = data;
         });
@@ -20,18 +20,18 @@
                 });
         };
 
-        vm.showOrderLines = function (orderID) {
-            vm.Lines = [];
-            angular.forEach(vm.orders,
-                function (ord) {
-                    if (ord.id == orderID) {
-                        angular.forEach(ord.orderlines,
-                            function (line) {
-                                vm.Lines.push(line);
-                            });
-                        console.debug(vm.Lines);
-                    }
-                });
-        };
+        //vm.showOrderLines = function (orderID) {
+        //    vm.Lines = [];
+        //    angular.forEach(vm.orders,
+        //        function (ord) {
+        //            if (ord.id == orderID) {
+        //                angular.forEach(ord.orderlines,
+        //                    function (line) {
+        //                        vm.Lines.push(line);
+        //                    });
+        //                console.debug(vm.Lines);
+        //            }
+        //        });
+        //};
     }
 }());

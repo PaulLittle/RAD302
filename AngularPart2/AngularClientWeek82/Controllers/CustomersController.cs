@@ -37,14 +37,7 @@ namespace AngularClientWeek82.Controllers
                 //.Select(c => new { id = c.ID, name = c.Name });
             return Cids.ToList<dynamic>();
         }
-
-        [Route("GetOids")]
-        public List<dynamic> GetOids(int id)
-        {
-            var Oids = db.Orders
-                .Where(o => o.CustomerID == id);
-            return Oids.ToList<dynamic>();
-        }
+               
 
         // GET: api/Customers/5
         [ResponseType(typeof(Customer))]

@@ -19,6 +19,9 @@
                     url: appSettings.serverPath + "/api/orders/GetOrders/",
                     method: 'GET', isArray: true
                 },
+                Orders: $resource(appSettings.serverPath + "/api/orders/"),
+                OrdersWithProducts: $resource(appSettings.serverPath + "/api/orders/getOrdersWithProducts/ID/:id"),
+                    
                     update: { method: 'PUT', params: { id: '@id' } },
                     query: { method: 'GET', params: { id: '' }, isArray: true },
                     post: { method: 'POST' },
