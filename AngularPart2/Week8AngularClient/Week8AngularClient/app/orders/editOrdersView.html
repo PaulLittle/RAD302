@@ -3,23 +3,152 @@
       novalidate
       ng-controller="EditOrderCtrl as vm">
     <fieldset>
-        <legend>Basic Order Information</legend>
+        <legend>Customer Order Information</legend>
         <div class="form-group">
             <label class="col-md-2 control-label" for="repeatSelect"> Select Customer </label>
             <div class="col-md-4">
                 <select class="form-control" name="repeatSelect" id="repeatSelect"
-                        ng-model="itemSelected"
-                        ng-change="vm.changed(itemSelected)">
-                    <option ng-repeat="option in vm.Ids"
-                            value="{{option.id}}">
-                        {{option.name}}
+                        ng-model="vm.selectedIndex"
+                        ng-change="vm.updateList()">
+                    <option ng-value="$index"
+                            ng-repeat="customer in vm.customer track by $index">
+                            {{customer.name}}
                     </option>
                 </select>
             </div>
         </div>
-        
 
-    </fieldset>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="repeatSelect"> Select Order ID</label>
+            <div class="col-md-4">
+                <select class="form-control" name="repeatSelect" id="repeatSelect"
+                        
+                        ng-model="itemSelected"
+                        ng-change="vm.changed(itemSelected)">
+                    <option style="font: inherit" value="0">{{vm.title }}</option>
+                    <option ng-repeat="order in vm.order"
+                            value="{{order.id}}">
+                        {{order.id}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <!--<div class="form-group">
+            <label class="col-md-2 control-label" for="repeatSelect"> Select Order </label>
+            <div class="col-md-4">
+                <select class="form-control" name="repeatSelect" id="repeatSelect"
+                        ng-model="itemSelected"
+                        ng-change="vm.changed(itemSelected)">
+                    <option style="font: inherit" value="0">{{vm.title }}</option>
+                    <option ng-repeat="option in vm.orders"
+                            value="{{option.id}}">
+                        {{option.id}}
+                    </option>
+                </select>
+            </div>
+        </div>-->
+
+        <div class="form-group"
+             ng-class="{'has-error':orderForm.inputEnteredBy.$invalid &&
+                                    orderForm.inputEnteredBy.$dirty}">
+            <label class="col-md-2 control-label" for="inputEnteredBy">Entered By</label>
+
+            <div class="col-md-4">
+                <input class="form-control"
+                       id="inputEnteredBy"
+                       name="inputEnteredBy"
+                       type="text"
+                       placeholder="Entered By (required)"
+                       ng-model="vm.order.enteredBy"
+                       required>
+            </div>
+            <span class="help-block has-error"
+                  ng-show="orderForm.inputEnteredBy.$invalid ">
+                Entered By is required
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label"
+                   for="inputOrderDate">Order Date</label>
+
+            <div class="col-md-4">
+                <div class="form-control">
+                    {{vm.order.orderDate|date }}
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label"
+                   for="inputCustomerID">Customer ID</label>
+            <div class="col-md-4">
+                <input class="form-control"
+                       id="inputCustomerID"
+                       name="inputCustomerID"
+                       type="text"
+                       placeholder="Customer ID (required)"
+                       ng-model="vm.order.customerID"
+                       required>
+            </div>
+            <br />
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-4 col-md-offset-2">
+                <span>
+                    <button class="btn btn-primary"
+                            style="width:80px;margin-right:10px"
+                            ng-click="vm.submit()"
+                            ng-disabled="orderForm.$invalid">
+                        Save
+                    </button>
+                </span>
+                <span>
+                    <button class="btn btn-default"
+                            style="width:70px"
+                            ng-click="vm.cancel(orderForm)">
+                        Cancel
+                    </button>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group"
+             ng-show="vm.message">
+            <div class="col-md-6">
+                <pre style="font: inherit">{{vm.message }}</pre>
+            </div>
+        </div>
+
+
+    <!--<div class="form-group"
+            ng-class="{'has-error':customerForm.inputOrderDate.$invalid &&
+                            customerForm.inputOrderDate.$dirty}">
+        <label class="col-md-2 control-label"
+                for="inputOrderDate">Order Date</label>
+
+        <div class="col-md-4">
+            <input class="form-control"
+                    id="inputOrderDate"
+                    name="inputOrderDate"
+                    type="text"
+                    placeholder="Order Date (required)"
+                    ng-model="vm.order.orderDate"
+                    required />
+        </div>
+        <span class="help-block has-error">
+            <span ng-show="customerForm.inputOrderDate.$error.required">
+                Order date is required.
+            </span>
+        </span>
+        <div class="form-group">
+
+        </div>
+    </div>-->
+
+</fieldset>
 </form>
 
 

@@ -21,9 +21,26 @@ namespace AngularClientWeek82.Controllers
         private BusinessDBContext db = new BusinessDBContext();
 
         // GET: api/Orders
-        public IQueryable<Order> GetOrders()
+        //public IQueryable<Order> GetOrders()
+        //{
+        //    return db.Orders.Include("Customer").Include("Orderlines");
+        //}
+
+        [Route("GetOrders")]
+        public List<dynamic> GetOrders()
         {
-            return db.Orders.Include("Customer").Include("Orderlines");
+            var GetOrders = db.Orders
+                .Include(o => o.Orderlines)
+                .Select(o => new {
+                    id = o.ID,
+                    orderDate = o.OrderDate,
+                    enteredBy = o.EnteredBy,
+                    customerId = o.CustomerID,
+                    orderLines = o.Orderlines
+                .Select(ol => new { id = ol.ID, orderId = ol.OrderID, productId = ol.ProductID, quantity = ol.Quantity })
+                });
+            //.Select(c => new { id = c.ID, name = c.Name });
+            return GetOrders.ToList<dynamic>();
         }
 
         [Route("getOrdersWithProducts/ID/{id:int}")]
@@ -49,12 +66,13 @@ namespace AngularClientWeek82.Controllers
         [ResponseType(typeof(Order))]
         public async Task<IHttpActionResult> GetOrder(int id)
         {
-            Order order = await db.Orders.FindAsync(id);
-            if (order == null)
-            {
-                return NotFound();
-            }
+            Order order;
 
+            if (id > 0)
+                order = await db.Orders.FindAsync(id);
+            else
+                order = new Order()
+                { OrderDate = DateTime.Now};
             return Ok(order);
         }
 

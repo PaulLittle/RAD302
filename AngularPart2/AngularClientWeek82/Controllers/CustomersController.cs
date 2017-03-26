@@ -23,15 +23,27 @@ namespace AngularClientWeek82.Controllers
         // GET: api/Customers
         public IQueryable<Customer> GetCustomers()
         {
-            return db.Customers;
+            return db.Customers.Include("Orders");
         }
 
         [Route("GetCids")]
         public List<dynamic> GetCids()
         {
             var Cids = db.Customers
-                .Select(c => new { id = c.ID, name = c.Name });
+                .Include(c => c.Orders)
+                .Select(c => new { id = c.ID, name = c.Name, order = c.Orders
+                .Select(o => new { id = o.ID, orderDate = o.OrderDate, enteredBy = o.EnteredBy, cutomerId = o.CustomerID, orderLines = o.Orderlines
+                .Select(ol => new {id = ol.ID, orderId = ol.OrderID, productId = ol.ProductID, quantity = ol.Quantity})})});
+                //.Select(c => new { id = c.ID, name = c.Name });
             return Cids.ToList<dynamic>();
+        }
+
+        [Route("GetOids")]
+        public List<dynamic> GetOids(int id)
+        {
+            var Oids = db.Orders
+                .Where(o => o.CustomerID == id);
+            return Oids.ToList<dynamic>();
         }
 
         // GET: api/Customers/5
